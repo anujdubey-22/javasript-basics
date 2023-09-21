@@ -3,6 +3,7 @@ item.firstElementChild.textContent="Hello"
 item.firstElementChild.style.color='green'
  //item1.style.color='red'
  item.children[1].style.color='yellow'
+ item.lastElementChild.innerHTML = '<h1>Hello</h1>'
 
 
  const btn = document.querySelector('.btn');
