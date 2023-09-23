@@ -23,3 +23,10 @@ console.log(title);
 console.log(title.firstElementChild)
 title[0].style.color='green'
 title[0].style.fontWeight='bold'
+
+var list=document.getElementsByClassName('list-group-item');
+console.log(list);
+list[2].style.background='green'
+for (var i=0;i<list.length;i++){
+  list[i].style.fontWeight='bold'
+}
