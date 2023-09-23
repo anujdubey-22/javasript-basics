@@ -30,3 +30,10 @@ list[2].style.background='green'
 for (var i=0;i<list.length;i++){
   list[i].style.fontWeight='bold'
 }
+
+var item5=document.getElementsByTagName('li');
+console.log(item5);
+item5[4].style.color='orange'
+item5[4].style.fontWeight='bold'
+item5[4].style.backgroundColor='red'
+item5[4].innerHTML='<h1>Item 5</h1>'
