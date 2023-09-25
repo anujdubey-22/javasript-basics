@@ -53,9 +53,9 @@
 // thirdItem.style.visibility='hidden'
 
 // QueryselectorAll
-var Item=document.querySelectorAll('.list-group-item');
-console.log(Item[1].textContent);
-Item[1].style.color='green'
+// var Item=document.querySelectorAll('.list-group-item');
+// console.log(Item[1].textContent);
+// Item[1].style.color='green'
 
 // for (i=0;i<Item.length;i++){
 //   if (i%2===0){
@@ -66,12 +66,56 @@ Item[1].style.color='green'
 //   }
 // }
 
-var odd=document.querySelectorAll('.list-group-item:nth-child(odd)');
-var even=document.querySelectorAll('.list-group-item:nth-child(even)');
-console.log(odd);
-console.log(even);
+// var odd=document.querySelectorAll('.list-group-item:nth-child(odd)');
+// var even=document.querySelectorAll('.list-group-item:nth-child(even)');
+// console.log(odd);
+// console.log(even);
 
-for (var i=0;i<odd.length;i++){
-  odd[i].style.background='grey';
-  even[i].style.background='darkgrey';
-}
+// for (var i=0;i<odd.length;i++){
+//   odd[i].style.background='grey';
+//   even[i].style.background='darkgrey';
+// }
+
+// parentElement
+var itemList=document.querySelector('#items');
+console.log(itemList);
+console.log(itemList.parentElement)
+console.log(itemList.parentNode)
+itemList.parentElement.style.background='red'
+itemList.parentNode.style.background='yellow'
+console.log(itemList.parentElement.parentElement.parentElement)
+
+//lastelememtchild
+console.log(itemList.lastElementChild)
+itemList.lastElementChild.textContent='hello 4'
+
+// lastchild
+console.log(itemList.lastElementChild.lastChild)
+
+// createchild
+newDiv=document.createElement('div');
+newDiv.className='hello';
+newDiv.id='hello1';
+newDiv.setAttribute('title','Hello Div');
+
+var newDivText=document.createTextNode('Hello world');
+newDiv.appendChild(newDivText)
+
+//var container=document.querySelector('header .container');
+container=document.querySelector('.container')
+var h1 =document.querySelector('header h1');
+container.insertBefore(newDiv, h1);
+console.log(newDiv);
+
+//firstelementchild
+
+console.log(itemList.firstElementChild)
+itemList.firstElementChild.textContent='Hello 1'
+
+//nextElementSibling
+
+console.log(itemList.nextElementSibling)
+
+//previoussibling
+
+console.log(itemList.previousElementSibling)
