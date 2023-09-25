@@ -93,24 +93,24 @@ itemList.lastElementChild.textContent='hello 4'
 console.log(itemList.lastElementChild.lastChild)
 
 // createchild
-newDiv=document.createElement('div');
-newDiv.className='hello';
-newDiv.id='hello1';
-newDiv.setAttribute('title','Hello Div');
+// newDiv=document.createElement('div');
+// newDiv.className='hello';
+// newDiv.id='hello1';
+// newDiv.setAttribute('title','Hello Div');
 
-var newDivText=document.createTextNode('Hello world');
-newDiv.appendChild(newDivText)
+// var newDivText=document.createTextNode('Hello world');
+// newDiv.appendChild(newDivText)
 
-//var container=document.querySelector('header .container');
-container=document.querySelector('.container')
-var h1 =document.querySelector('header h1');
-container.insertBefore(newDiv, h1);
-console.log(newDiv);
+// //var container=document.querySelector('header .container');
+// container=document.querySelector('.container')
+// var h1 =document.querySelector('header h1');
+// container.insertBefore(newDiv, h1);
+// console.log(newDiv);
 
 //firstelementchild
 
 console.log(itemList.firstElementChild)
-itemList.firstElementChild.textContent='Hello 1'
+//itemList.firstElementChild.textContent='Hello 1'
 
 //nextElementSibling
 
@@ -119,3 +119,24 @@ console.log(itemList.nextElementSibling)
 //previoussibling
 
 console.log(itemList.previousElementSibling)
+
+
+// creating second element
+
+newText=document.createTextNode('HEllo');
+
+var container=document.querySelector('header .container')
+console.log(container)
+var item_lister=document.querySelector('header h1');
+
+container.insertBefore(newText,item_lister)
+
+//////
+
+newText=document.createTextNode('HEllo');
+
+var container=document.querySelector('ul')
+console.log(container)
+var item_lister=document.querySelector('.list-group-item');
+
+container.insertBefore(newText,item_lister)
