@@ -1,57 +1,47 @@
-var form = document.getElementById('addForm');
-var itemList=document.getElementById('items');
-var filter=document.getElementById('filter');
+// USER FORM SCRIPT
 
+// Put DOM elements into variables
+const myForm = document.querySelector('#my-form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const msg = document.querySelector('.msg');
+const userList = document.querySelector('#users');
 
+// Listen for form submit
+myForm.addEventListener('submit', onSubmit);
 
-
-form .addEventListener('submit',addItem);
-filter.addEventListener('keyup',filterItems);
-
-
-
-function addItem(e){
+function onSubmit(e) {
   e.preventDefault();
-  //console.log(e.target.value)
-  var newItem=document.getElementById('item').value;
-  var newDescription=document.getElementById('description').value;
-  console.log(newItem);
-
-  var li =document.createElement('li');
-
-  var newButton=document.createElement('button');
-  var newEditBtn=document.createElement('button');
-
-  li.className='list-group-item' ;
-  newButton.className='btn btn-danger btn-sm float-right delete';
-  newEditBtn.className='btn btn-info btn-sm float-right delete'
-
-  li.appendChild(document.createTextNode(`${newItem} ${newDescription}`));
-  newButton.appendChild(document.createTextNode('X'));
-  newEditBtn.appendChild(document.createTextNode('Edit'));
-
-  li.appendChild(newEditBtn);
-  li.append(newButton);
   
+  if(nameInput.value === '' || emailInput.value === '') {
+    // alert('Please enter all fields');
+    msg.classList.add('error');
+    msg.innerHTML = 'Please enter all fields';
 
-  itemList.appendChild(li)
-  console.log(li)
+    // Remove error after 3 seconds
+    setTimeout(() => msg.remove(), 3000);
+  } else {
+    // Create new list item with user
+    const li = document.createElement('li');
 
-}
+    // Add text node with input values
+    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
 
-function filterItems(e){
-  console.log(e.target.value);
+    // Add HTML
+    // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
 
-  var text=e.target.value.toLowerCase();
-  var items = itemList.getElementsByTagName('li');
-  // Convert to an array
-  Array.from(items).forEach(function(item){
-    var itemName = item.firstChild.textContent;
-    if(itemName.toLowerCase().indexOf(text) != -1){
-      item.style.display = 'block';
-    } else {
-      item.style.display = 'none';
-    }
-  });
-  console.log(text)
+    // Append to ul
+    userList.appendChild(li);
+    var userValue=`${nameInput.value}: ${emailInput.value}`;
+    var localStorageArray = JSON.parse(localStorage.getItem("userInput")) || [];
+    console.log(localStorageArray)
+    localStorageArray.push(userValue);
+    localStorage.setItem("userInput", JSON.stringify(localStorageArray));
+
+    //localStorage.setItem('userInput', localStorageArray)
+
+    // Clear fields
+    nameInput.value = '';
+    emailInput.value = '';
+  }
 }
