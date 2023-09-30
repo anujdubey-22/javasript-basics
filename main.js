@@ -1,3 +1,9 @@
+var userslist = document.getElementById('users');
+
+//userslist.addEventListener('click',onClick);
+
+
+
 function savetolocalstorage(event){
     event.preventDefault();
     //console.log('hi')
@@ -16,9 +22,25 @@ function savetolocalstorage(event){
 
     var users=document.getElementById('users');
 
-    var li = document.createElement('li')
+    var li = document.createElement('li');
+    var btn = document.createElement('button');
 
-    li.appendChild(document.createTextNode(`${name}-${email}-${phone}`));
+    btn.id='button';
+    btn.appendChild(document.createTextNode('Delete'));
+
+    btn.addEventListener('click',clicked);
+
+    function clicked(e){
+        console.log('hi',obj,e.target)
+        var li = e.target.parentElement;
+        users.removeChild(li);
+        
+        localStorage.removeItem(obj.email);
+
+    }
+
+    li.appendChild(document.createTextNode(`${name} - ${email} - ${phone}`));
+    li.appendChild(btn)
     users.appendChild(li)
     console.log(li)
 
@@ -26,4 +48,21 @@ function savetolocalstorage(event){
 
     localStorage.setItem(email,objString);
 
+    
+
 }
+
+
+
+// function onClick(e){
+//     //console.log('clicked')
+//     var li =e.target.parentElement;
+//     console.log(e.value,li)
+//     console.log(ojb.email)
+//     if(e.target.id==='button'){
+//         var li =e.target.parentElement;
+//         users.removeChild(li);
+//     };
+
+
+// }
