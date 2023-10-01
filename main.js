@@ -24,9 +24,25 @@ function savetolocalstorage(event){
 
     var li = document.createElement('li');
     var btn = document.createElement('button');
+    var edit = document.createElement('button');
 
     btn.id='button';
     btn.appendChild(document.createTextNode('Delete'));
+    edit.appendChild(document.createTextNode('Edit'));
+
+    
+
+    li.appendChild(document.createTextNode(`${name} - ${email} - ${phone}`));
+    li.appendChild(btn)
+    li.appendChild(edit)
+    users.appendChild(li)
+    console.log(li)
+
+    var objString=JSON.stringify(obj);
+
+    localStorage.setItem(email,objString);
+
+
 
     btn.addEventListener('click',clicked);
 
@@ -39,15 +55,23 @@ function savetolocalstorage(event){
 
     }
 
-    li.appendChild(document.createTextNode(`${name} - ${email} - ${phone}`));
-    li.appendChild(btn)
-    users.appendChild(li)
-    console.log(li)
 
-    var objString=JSON.stringify(obj);
+    edit.addEventListener('click',edited);
 
-    localStorage.setItem(email,objString);
+    function edited(e){
+        //console.log('hi',obj,e.target)
+        var li = e.target.parentElement;
+        //console.log(li)
+        users.removeChild(li);
+        
+        localStorage.removeItem(obj.email);
 
+        document.getElementById('name').value=obj.name
+        document.getElementById('email').value=obj.email
+        document.getElementById('phone').value=obj.phone
+        
+        //console.log(name)
+    }
     
 
 }
